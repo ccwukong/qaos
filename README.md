@@ -14,17 +14,32 @@
 
 Built on top of **AI Agent** and **Skills**, qaos helps projects of all sizes build and run QA test cases progressively and automatically. It acts as a collaborative partner, exploring your application to discover bugs, generate test cases, and ensure quality at speed.
 
+## Table of Contents
+
+- [Architecture](#architecture)
+- [Quick Start](#quick-start)
+- [Usage](#usage)
+- [Settings](#settings)
+- [Screenshots & Privacy](#screenshots--privacy)
+- [Environment Variables](#environment-variables)
+- [Available Skills](#available-skills)
+  - [Contributing New Skills](#contributing-new-skills)
+- [Database Setup](#database-setup)
+  - [Using PostgreSQL](#using-postgresql)
+- [Project Structure](#project-structure)
+- [License](#license)
+
 ## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│  Split-Screen Workspace                            │
-│  ┌──────────┬──────────────────┬──────────────────┐│
-│  │ Sidebar  │   Chat Feed      │  Live Canvas     ││
-│  │          │   (SSE stream)   │  (Puppeteer)     ││
-│  │ Sessions │                  │                  ││
-│  │ Settings │   [Export JSON]  │  [Screenshot]    ││
-│  └──────────┴──────────────────┴──────────────────┘│
+│  Split-Screen Workspace                             │
+│  ┌──────────┬──────────────────┬──────────────────┐ │
+│  │ Sidebar  │   Chat Feed      │  Live Canvas     │ │
+│  │          │   (SSE stream)   │  (Puppeteer)     │ │
+│  │ Sessions │                  │                  │ │
+│  │ Settings │   [Export JSON]  │  [Screenshot]    │ │
+│  └──────────┴──────────────────┴──────────────────┘ │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -65,7 +80,6 @@ Go to **⚙️ Settings** (bottom-left of sidebar) to configure:
 
 - **Theme**: Light / Dark / System (Auto-saves on change)
 - **Model**: Choose provider (OpenAI, OpenRouter) and model (Auto-saves on change)
-- **API Keys**: Stored locally in SQLite — never sent to any third party
 
 ## Screenshots & Privacy
 
@@ -134,19 +148,25 @@ The application will automatically connect to Postgres instead of creating a loc
 
 ```
 .
-├── skills/            # Skill definitions (SKILL.md, scripts)
-│   ├── standard-login/
-│   └── ...
-├── docs/              # Documentation
-├── bin/               # Scripts (debug-skills.ts)
-├── .qaos/             # Runtime data (screenshots, db)
-├── app/
+├── app/               # Main application source
 │   ├── db/            # Database schema & connection
 │   ├── public/        # Static assets (logo, favicon)
-│   ├── routes/        # React Router routes
-│   └── services/      # Backend logic (agent, skills, etc.)
-├── .env               # Configuration
-├── package.json       # Dependencies
+│   ├── routes/        # React Router route modules
+│   ├── services/      # Agent, browser, SSE, and skill orchestration
+│   └── tests/         # Unit/integration tests
+├── docs/              # Project documentation
+├── skills/            # Built-in skill definitions (SKILL.md, scripts, assets)
+│   ├── standard-login/
+│   └── ...
+├── templates/         # Starter template for creating new skills
+│   └── sample-skill/
+├── .qaos/             # Runtime data (screenshots, db)
+├── .github/           # CI/CD workflows and repo automation
+├── Dockerfile         # Container build definition
+├── react-router.config.ts
+├── vitest.config.ts
+├── tsconfig.json
+├── package.json       # Scripts and dependencies
 └── vite.config.ts     # Build configuration
 ```
 
