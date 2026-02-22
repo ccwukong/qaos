@@ -1,0 +1,25 @@
+qaos
+Copyright 2026 qaos Contributors
+
+This product includes software developed at
+The Apache Software Foundation (http://www.apache.org/).
+
+=========================================================================
+
+Third-party dependencies and their licenses:
+
+- React (MIT License) - Copyright Meta Platforms, Inc.
+- React Router (MIT License) - Copyright Remix Software, Inc.
+- Puppeteer (Apache-2.0) - Copyright Google LLC
+- pdf-parse (MIT License) - Copyright Nicola Greco
+- mammoth (BSD-2-Clause) - Copyright Michael Williamson
+- OpenAI Node SDK (Apache-2.0) - Copyright OpenAI
+- PostgreSQL (PostgreSQL License) - Copyright The PostgreSQL Global Development Group
+- pgvector (PostgreSQL License) - Copyright Andrew Kane
+
+=========================================================================
+
+This product also includes code inspired by or adapted from:
+
+- Mastra.ai agent framework patterns
+- OWASP Testing Guide v4.2 (Creative Commons Attribution-ShareAlike 4.0)

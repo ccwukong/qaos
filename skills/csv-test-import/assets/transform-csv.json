@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+    "csvPath": {
+      "type": "string",
+      "description": "Absolute or workspace-relative path to the CSV file"
+    },
+    "testId": {
+      "type": "string",
+      "description": "Logical test group identifier to associate imported rows"
+    },
+    "mapping": {
+      "type": "object",
+      "description": "Map of raw CSV column name to normalized field name, e.g. { \"Raw Col A\": \"title\" }",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "batchSize": {
+      "type": "integer",
+      "minimum": 50,
+      "maximum": 5000,
+      "default": 500,
+      "description": "Number of mapped rows inserted per SQL statement"
+    },
+    "delimiter": {
+      "type": "string",
+      "default": ",",
+      "description": "CSV delimiter"
+    },
+    "encoding": {
+      "type": "string",
+      "default": "utf8",
+      "description": "File encoding used by fs.createReadStream"
+    },
+    "sourceFile": {
+      "type": "string",
+      "description": "Optional display name for source file in DB"
+    }
+  },
+  "required": ["csvPath", "testId", "mapping"]
+}
